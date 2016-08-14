@@ -1,5 +1,7 @@
 $(document).ready(function(){
 
+var questionNumber = 0;
+
 
 gameStart();
 
@@ -19,11 +21,26 @@ function gameStart() {
 
 
 
+function questions (prompt1) {
+   $("#questions").text(prompt1);
+
+
+};
+
+function answers (a) {
+$("#answer1").text(a);
+   
+ 
+};
+
+
+
+
 //timer section
 
 run();
 
-var number = 10;
+var number = 5;
 
 	function run() {
 
@@ -36,8 +53,12 @@ var number = 10;
  		$('#timer').html('<h2>' + number + '</h2>');
 
  		if(number === 0) {
- 			alert("time up");
  			stop();
+ 			questionNumber++
+
+ 			questions("What is the next question?");
+ 			answers("how do I fix this?");
+
  		}
 
 };
@@ -45,7 +66,11 @@ var number = 10;
 	function stop(){
 		clearInterval(counter);
 		}
-		
+
 //end timer section
+
+
+
+
 
 });
