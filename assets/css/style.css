@@ -1,0 +1,95 @@
+
+body  {
+margin: 0 auto;
+background: url("http://images6.fanpop.com/image/photos/32400000/rainforest-rainforest-32472859-1280-1024.jpg");
+background-size: cover;
+background-repeat: no-repeat;
+	
+}
+
+.wrapper {
+
+	border-radius: 40px;
+	height: 900px;
+	background: black;
+	opacity: .8;
+	margin: 10%;
+
+
+}
+
+article {
+	text-align: center;
+	margin-top: 50px;
+	color: white;
+}
+img {
+	height: 300px;
+	width: 300px;
+	padding: 40px;
+	
+}
+
+
+h2 {
+	font-size: 20px;
+}
+
+h1 {
+	color:white;
+	text-align: center;
+	font-size: 40px;
+	padding: 30px;
+	margin-top: 40px;
+
+}
+
+
+
+
+section {
+
+	padding: 40px;
+
+
+}
+ul {
+	color: white;
+	text-align: center;
+
+
+}
+
+ul li {
+	
+	
+	width: 50%;
+	margin: 0 auto;
+	padding: 20px;
+	font-size: 20px;
+	border-radius: 20px;
+
+}
+
+ul li:hover {
+   color: black;
+   background: white;
+}
+
+ a {
+	color: white;
+	text-decoration: none;
+}
+
+
+
+
+
+
+	
+
+
+
+
+
+}
