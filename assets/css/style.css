@@ -18,10 +18,21 @@ background-repeat: no-repeat;
 
 }
 
+aside {
+	margin-top: 200px;
+}
+
 article {
 	text-align: center;
-	margin-top: 50px;
 	color: white;
+	
+	
+}
+
+#timer {
+
+	padding: 40px;
+	font-size: 16px;
 }
 img {
 	height: 300px;
@@ -39,23 +50,25 @@ h1 {
 	color:white;
 	text-align: center;
 	font-size: 40px;
-	padding: 30px;
+	padding-top: 30px;
+	padding-bottom: 10px;
 	margin-top: 40px;
 
 }
 
 
 
-
 section {
 
-	padding: 40px;
+	
+	border: 2px solid white;
 
 
 }
 ul {
 	color: white;
 	text-align: center;
+	
 
 
 }
@@ -88,8 +101,3 @@ ul li:hover {
 
 	
 
-
-
-
-
-}
