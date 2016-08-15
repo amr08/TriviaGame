@@ -47,7 +47,7 @@ $("#answer1").text(a);
 
 run();
 
-var number = 10;
+var number = 5;
 
 	function run() {
 
@@ -80,16 +80,54 @@ function nextQuestion(){
 	
 		questions(quiz[0].question);
         answers(quiz[0].answer);
-        number = 10;
+        number = 5;
         run();
 	
+
+	for(var i = 0; i <= questionNumber.length; i++) {
+   console.log(questionNumber[i]);
+	}
+
+
 if(questionNumber === 1) {
-
-
 		questions(quiz[1].question);
         answers(quiz[1].answer);
 
 }
+
+
+if(questionNumber === 2) {
+
+
+		questions(quiz[2].question);
+        answers(quiz[2].answer);
+
+}
+
+if(questionNumber === 3) {
+
+
+		questions(quiz[3].question);
+        answers(quiz[3].answer);
+
+}
+
+if(questionNumber === 4) {
+
+
+		questions(quiz[4].question);
+        answers(quiz[4].answer);
+
+}
+
+if(questionNumber === 5) {
+
+
+		questions(quiz[5].question);
+        answers(quiz[5].answer);
+
+}
+
 };
 
 
