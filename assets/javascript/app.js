@@ -1,8 +1,12 @@
 $(document).ready(function(){
 
-var questionNumber = 0;
+
+ var questionNumber = 0;
 
 
+
+
+//game start
 gameStart();
 
 
@@ -18,6 +22,9 @@ function gameStart() {
 
      });
 };
+//end game start
+
+
 
 
 
@@ -40,7 +47,7 @@ $("#answer1").text(a);
 
 run();
 
-var number = 5;
+var number = 10;
 
 	function run() {
 
@@ -54,23 +61,73 @@ var number = 5;
 
  		if(number === 0) {
  			stop();
- 			questionNumber++
-
- 			questions("What is the next question?");
- 			answers("how do I fix this?");
+            nextQuestion();
+ 			questionNumber++	
 
  		}
 
 };
 
-	function stop(){
+
+
+function stop(){
 		clearInterval(counter);
-		}
+
+};
+
+
+function nextQuestion(){
+	
+		questions(quiz[0].question);
+        answers(quiz[0].answer);
+        number = 10;
+        run();
+	
+if(questionNumber === 1) {
+
+
+		questions(quiz[1].question);
+        answers(quiz[1].answer);
+
+}
+};
+
 
 //end timer section
 
 
 
+var quiz = [{
+
+	question: "A quesiton goes here",
+	answer: ["kiwi, apples, oranges, lime"],
+	correct: "apples",
+},
+
+{
+	question: "a second question",
+	answer: "a second answer"
+},
+
+{
+	question: "a third question",
+	answer: "a third answer"
+},
+
+{ 
+	question: "a fourth",
+	answer: "an answer"
+
+},
+
+{ 
+	question: "a fifth",
+	answer: " a fith answer"
+
+},
+]
 
 
 });
+
+
