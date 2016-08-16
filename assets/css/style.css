@@ -1,7 +1,7 @@
 
 body  {
 margin: 0 auto;
-background: url("http://images6.fanpop.com/image/photos/32400000/rainforest-rainforest-32472859-1280-1024.jpg");
+background: url("http://onehdwallpaper.com/wp-content/uploads/2015/07/Snow-Nature-Mountain-HD-Wallpaper.jpg");
 background-size: cover;
 background-repeat: no-repeat;
 	
@@ -11,9 +11,10 @@ background-repeat: no-repeat;
 
 	border-radius: 40px;
 	height: 900px;
-	background: black;
+	background: #212121;
 	opacity: .8;
 	margin: 10%;
+	border: 6px groove white;
 
 
 }
@@ -61,7 +62,7 @@ h1 {
 section {
 
 	
-	border: 2px solid white;
+	
 
 
 }

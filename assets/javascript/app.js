@@ -2,6 +2,8 @@ $(document).ready(function(){
 
 
  var questionNumber = 0;
+ var loss = 0;
+ var win= 0;
 
 
 
@@ -19,7 +21,7 @@ function gameStart() {
 
  	$("aside").hide();
  	$("article, section").show();
-
+    nextQuestion();
      });
 };
 //end game start
@@ -34,8 +36,11 @@ function questions (prompt1) {
 
 };
 
-function answers (a) {
+function answers (a,b,c,d) {
 $("#answer1").text(a);
+$("#answer2").text(b);
+$("#answer3").text(c);
+$("#answer4").text(d);
    
  
 };
@@ -47,7 +52,9 @@ $("#answer1").text(a);
 
 run();
 
-var number = 5;
+
+
+var number = 10;
 
 	function run() {
 
@@ -61,8 +68,9 @@ var number = 5;
 
  		if(number === 0) {
  			stop();
+ 			questionNumber++
             nextQuestion();
- 			questionNumber++	
+ 				
 
  		}
 
@@ -76,22 +84,30 @@ function stop(){
 };
 
 
+//end timer section
+
+
+
 function nextQuestion(){
 	
 		questions(quiz[0].question);
-        answers(quiz[0].answer);
-        number = 5;
+        answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
+        number = 10;
+        
         run();
 	
 
-	for(var i = 0; i <= questionNumber.length; i++) {
-   console.log(questionNumber[i]);
-	}
+	// for(var i = 0; i <= questionNumber.length; i++) {
+ //   console.log(questionNumber[i]);
+	// }
 
 
 if(questionNumber === 1) {
 		questions(quiz[1].question);
+		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
+        document.querySelector("#images").innerHTML = picture; 
         answers(quiz[1].answer);
+        
 
 }
 
@@ -101,6 +117,7 @@ if(questionNumber === 2) {
 
 		questions(quiz[2].question);
         answers(quiz[2].answer);
+        
 
 }
 
@@ -109,6 +126,7 @@ if(questionNumber === 3) {
 
 		questions(quiz[3].question);
         answers(quiz[3].answer);
+        
 
 }
 
@@ -117,6 +135,7 @@ if(questionNumber === 4) {
 
 		questions(quiz[4].question);
         answers(quiz[4].answer);
+      
 
 }
 
@@ -125,26 +144,27 @@ if(questionNumber === 5) {
 
 		questions(quiz[5].question);
         answers(quiz[5].answer);
+        
 
 }
 
 };
 
 
-//end timer section
+
 
 
 
 var quiz = [{
 
-	question: "A quesiton goes here",
-	answer: ["kiwi, apples, oranges, lime"],
-	correct: "apples",
+	question: "What is the largest country located entirely in Europe?",
+	answer: ["Germany", "Spain", "France", "Ukraine"],
+	correct: "France",
 },
 
 {
-	question: "a second question",
-	answer: "a second answer"
+	question: "What country are these cliffs located in??",
+	answer: ["Canada", "Peru", "Japan", "Ireland"]
 },
 
 {
@@ -164,6 +184,24 @@ var quiz = [{
 
 },
 ]
+
+
+//correct indicator
+
+$("section ul a").on("click",function() {
+
+//if (this === quiz.correct) {
+	//console.log ("you got it!")
+//}
+if (quiz.correct.indexOf(this) -1) {
+	console.log("incorrect");
+	loss--
+}
+    else {
+    	win++
+    	console.log("correct!")
+    }
+});
 
 
 });
