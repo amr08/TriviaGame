@@ -4,13 +4,14 @@ margin: 0 auto;
 background: url("http://onehdwallpaper.com/wp-content/uploads/2015/07/Snow-Nature-Mountain-HD-Wallpaper.jpg");
 background-size: cover;
 background-repeat: no-repeat;
+height: 1000px;
 	
 }
 
 .wrapper {
 
 	border-radius: 40px;
-	height: 900px;
+	min-height: 500px;
 	background: #212121;
 	opacity: .8;
 	margin: 10%;
