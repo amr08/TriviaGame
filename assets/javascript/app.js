@@ -1,7 +1,8 @@
 $(document).ready(function(){
 
 
- var questionNumber = 0;
+ var timeRanOut = 0;
+ var madeSelection = 0;
  var loss = 0;
  var win= 0;
  
@@ -56,7 +57,7 @@ run();
 
 
 
-var number = 5;
+var number = 20;
 
 	function run() {
 
@@ -70,14 +71,11 @@ var number = 5;
 
  		if(number === 0) {
  			stop();
- 			questionNumber++
+	        timeRanOut++
             nextQuestion();
- 				
-
  		}
 
 };
-
 
 
 function stop(){
@@ -94,53 +92,85 @@ function end(){
 
 
 
-function nextQuestion(){
-	    //$("#answer3").addClass("correct");
-		questions(quiz[0].question);
-        answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
-        number = 5;
-        
-        run();
+
+function correct(answer){
+
+$("section ul a").on("click",function(event) {
 	
 
-	// for(var i = 0; i <= questionNumber.length; i++) {
- //   console.log(questionNumber[i]);
-	// }
+	var userPick = ($(this).text());
+    console.log(userPick)
+
+ if (userPick == answer) {
+ console.log ("you got it!")
+ console.log(win++)
+madeSelection++
+ nextQuestion();
+ 
+ }
+
+else  {
+	console.log(loss++)
+	console.log("incorrect");
+	nextQuestion();
+	madeSelection++
+	
 
 
-if(questionNumber === 1) {
-	    //$("#answer3").removeClass("correct");
-	    //$("#answer4").addClass("correct");
+   }
+
+   
+event.stopPropagation();
+
+
+});
+
+};
+
+
+
+function nextQuestion(){
+
+    questions(quiz[0].question);
+  	answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
+        number = 20;
+	     run();
+	 correct(quiz[0].correct)
+
+
+
+if(timeRanOut || madeSelection === 1) {
+	   
 		questions(quiz[1].question);
 		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
         document.querySelector("#images").innerHTML = picture; 
         answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);
         
-
+        correct(quiz[1].correct);
 }
 
 
-if(questionNumber === 2) {
+else if(timeRanOut || madeSelection=== 2) {
 
-        //$("#answer4").removeClass("correct");
-        //$("#answer1").addClass("correct");
+        
 		questions(quiz[2].question);
         answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
         $("#images").hide();
+        correct(quiz[2].correct);
         
 
 }
 
-if(questionNumber === 3) {
+else if(timeRanOut || madeSelection=== 3) {
 
 
 		questions(quiz[3].question);
         answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
-        
+        correct(quiz[3].correct);
 
 }
 
-if(questionNumber === 4) {
+else if(timeRanOut || madeSelection=== 4) {
 
    
 		questions(quiz[4].question);
@@ -148,11 +178,12 @@ if(questionNumber === 4) {
         document.querySelector("#images").innerHTML = picture; 
         answers(quiz[4].answer[0], quiz[4].answer[1], quiz[4].answer[2], quiz[4].answer[3]);
         $("#images").show();
+        correct(quiz[4].correct);
 
 }
 
 
- else if(questionNumber ===5) {
+ else if(timeRanOut || madeSelection===5) {
 	$("#images").hide();
 	$("#questions").text("wins" + win + "losses" + loss);
 	end();
@@ -172,7 +203,6 @@ if(questionNumber === 4) {
 end();
 
 };
-
 
 
 
@@ -199,48 +229,32 @@ var quiz = [{
 
 { 
 	question: "Where was Leonardo DiCaprio's movie, 'The Beach', filmed?",
-	answer: ["Fiji", "Hawaii", "Thailand", "Costa Rica"]
-	//correct: //quiz[3].answer[2];//?
+	answer: ["Fiji", "Hawaii", "Thailand", "Costa Rica"],
+	correct: "Thailand"
 
 },
 
 { 
 	question: "Where is this Wonder of the World Located?",
-	answer: ["Scotland","Mexico","Peru", "Indonesia"],
-	correct: "something else correct"
+	answer: ["Scotland","Mexico", "Peru", "Indonesia"],
+	correct: "Peru"
 
 },
 ]
 
-//OR loop through
-var correct = ["France", "Ireland", "Times Square"];
+
+
+
+
+
+
+
 
 //correct indicator
 
 
 
-$("section ul a").on("click",function(event) {
-	console.log(this);
-	
- if($("section ul a").is()) {
-// var compare = $(this);
-// console.log(this)
-// //if (this === quiz.correct) {
-// 	//console.log ("you got it!")
-// //}
-// if (correct.indexOf(compare) == -1) {
-// 	console.log("incorrect");
-// 	loss--
-// }
-//     else {
-    	win++
-    	console.log("correct!")
-    
-    }
-event.stopPropagation();
 
-
-});
 
 
 });
