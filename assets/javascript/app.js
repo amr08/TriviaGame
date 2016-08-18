@@ -3,9 +3,9 @@ $(document).ready(function(){
 
  var timeRanOut = 0;
 
- var loss = 0;
+ var missed = 0;
  var win= 0;
- 
+ var miss=0;
 
 
 
@@ -129,20 +129,24 @@ function stop(){
  function correct(answer){
  	$("section ul a").on("click",function(event) {
 	var userPick = ($(this).text());
-	
     console.log(userPick)
       
  
  		if (userPick == answer) {
 
-			console.log ("you got it!")
-	  		win++
-  			console.log(win)
-  			return nextQuestion();
-  			event.stopPropagation();
+  			
+  			win++
+  			number = 10;
+  			return questions("Correct!");
+  			
+
   			
 			 }
-        
+        else if (userPick !== answer) {
+        	miss++;
+        	number = 10;
+        	return questions("Wrong! Correct answer was " + answer);;
+        }
   		return
 // // // 	console.log(loss++)
 // // // 	console.log("incorrect");
@@ -150,7 +154,7 @@ function stop(){
   	 
 
 
-    //nextQuestion();
+   
 	event.stopPropagation();
  
     
@@ -160,13 +164,26 @@ return
 };
 
 
+// function displayCorrect (){
+// 	var restartCorrect = 5;
+//  function restart() {
+// 	counter = setInterval(timeLeft, 1000);
+// }
+// 	function timeRemains() {
+// 	restartCorrect--
+//  		$('#timer').html('<h2>' + restartCorrect + '</h2>');
 
+// }
+// 	questions("You Got it!");
+// 	stop();
+// };
 
 
 if(timeRanOut === 0) {
     questions(quiz[0].question);
   	answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
 	 correct(quiz[0].correct);
+	 
 
 }
 
@@ -218,7 +235,7 @@ function nextQuestion () {
 
 if (timeRanOut ===5 || win === 5) {
  	 $("#images").hide();
- 	 $("#questions").text("wins " + win + " losses " + (5-win));
+ 	 $("#questions").text("correct " + win + " missed " + (win - loss));
  	 stop();
      $("section").remove();
  	 $("#timer").remove();
