@@ -11,8 +11,8 @@ height: 1000px;
 .wrapper {
 
 	border-radius: 40px;
-	min-height: 500px;
-	background: #212121;
+	min-height: 600px;
+	background: #1A1A1A;
 	opacity: .8;
 	margin: 10%;
 	border: 6px groove black;
@@ -62,7 +62,7 @@ h1 {
 
 section {
 
-	
+	text-align: center;
 	
 
 

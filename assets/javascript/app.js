@@ -90,7 +90,7 @@ $("#answer4").text(d);
 
 //timer section
 
-var number = 20;
+var number = 10;
 
 	function run() {
 
@@ -109,13 +109,17 @@ function stop(){
  		$('#timer').html('<h2>' + number + '</h2>');
 
  		if(number === 0) {
+ 			
+
  			stop();
 	        timeRanOut++;
 	        console.log(timeRanOut)
             $("#questions").text("Time is up!");
-	        nextQuestion();
-            number = 20;
+	        //return
+            number = 10;
+            nextQuestion();
             run();
+ 
             
  		}
 
@@ -125,7 +129,7 @@ function stop(){
 
 
 
-
+//check answer
  function correct(answer){
  	$("section ul a").on("click",function(event) {
 	var userPick = ($(this).text());
@@ -136,16 +140,19 @@ function stop(){
 
   			
   			win++
-  			number = 10;
+  			number = 5;
+  			$("#correct").append("<img src='http://www.marymarcusfiction.com/wp-content/uploads/2015/09/yay-54383329058.jpeg'/>");
+            $("section ul a").hide();
+          
   			return questions("Correct!");
-  			
-
   			
 			 }
         else if (userPick !== answer) {
         	miss++;
-        	number = 10;
-        	return questions("Wrong! Correct answer was " + answer);;
+        	number = 5;
+        	$("#incorrect").append("<img src='https://upload.wikimedia.org/wikipedia/commons/3/3b/Paris_Tuileries_Garden_Facepalm_statue.jpg'/>");
+            $("section ul a").hide();
+        	return questions("Wrong! Correct answer was " + answer);
         }
   		return
 // // // 	console.log(loss++)
@@ -159,26 +166,16 @@ function stop(){
  
     
 });
+
+
 return
 
 };
 
-
-// function displayCorrect (){
-// 	var restartCorrect = 5;
-//  function restart() {
-// 	counter = setInterval(timeLeft, 1000);
-// }
-// 	function timeRemains() {
-// 	restartCorrect--
-//  		$('#timer').html('<h2>' + restartCorrect + '</h2>');
-
-// }
-// 	questions("You Got it!");
-// 	stop();
-// };
+//end checkanswer
 
 
+//content display conditionals
 if(timeRanOut === 0) {
     questions(quiz[0].question);
   	answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
@@ -188,9 +185,10 @@ if(timeRanOut === 0) {
 }
 
 function nextQuestion () {
-  if(timeRanOut  === 1 || win === 1) {
-	   
-	   
+  if(timeRanOut  === 1) {
+	   $("section ul a").show();
+	   $("#correct img:last-child").remove();
+	   $("#incorrect img:last-child").remove();
 	   correct(quiz[1].correct);
 		questions(quiz[1].question);
 		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
@@ -201,9 +199,10 @@ function nextQuestion () {
 
 
 
-   if(timeRanOut ===2 || win ===2) {
-
-
+   if(timeRanOut ===2) {
+$("section ul a").show();
+ $("#correct img:last-child").remove();
+	   $("#incorrect img:last-child").remove();
         correct(quiz[2].correct);
 		questions(quiz[2].question);
         answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
@@ -213,7 +212,10 @@ function nextQuestion () {
 
 }
 
-  if(timeRanOut ===3 || win === 3) {
+  if(timeRanOut ===3 ) {
+  	$("section ul a").show();
+  	 $("#correct img:last-child").remove();
+	   $("#incorrect img:last-child").remove();
 		correct(quiz[3].correct);
 		questions(quiz[3].question);
         answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
@@ -221,8 +223,10 @@ function nextQuestion () {
 
 }
 
-  if(timeRanOut === 4 || win === 4) {
-
+  if(timeRanOut === 4 ) {
+  	$("section ul a").show();
+ $("#correct img:last-child").remove();
+	   $("#incorrect img:last-child").remove();
         correct(quiz[4].correct);
 		questions(quiz[4].question);
 		var picture = "<img src='http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/10/12/new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462.jpeg'>"
@@ -233,27 +237,19 @@ function nextQuestion () {
 
 }
 
-if (timeRanOut ===5 || win === 5) {
+if (timeRanOut ===5 ) {
+
  	 $("#images").hide();
- 	 $("#questions").text("correct " + win + " missed " + (win - loss));
+ 	 $("#questions").text("correct " + win + " missed " + (miss));
  	 stop();
      $("section").remove();
  	 $("#timer").remove();
 }
 };
-// }
+//end content display conditionals
 
 
 
-
-// else if(questionNumber === 5) {
-
-// 		$("#images").remove();
-// 		questions(quiz[5].question);
-// 	    answers(quiz[5].answer);
-        
-
-//};
 
 
 
