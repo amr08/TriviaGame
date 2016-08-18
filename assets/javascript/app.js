@@ -2,7 +2,7 @@ $(document).ready(function(){
 
 
  var timeRanOut = 0;
- var madeSelection = 0;
+
  var loss = 0;
  var win= 0;
  
@@ -24,8 +24,8 @@ function gameStart() {
  	$("aside").hide();
  	$("article, section").show();
     event.stopPropagation();
+    //nextQuestion();
      run();
-     nextQuestion();
      });
 };
 //end game start
@@ -110,11 +110,13 @@ function stop(){
 
  		if(number === 0) {
  			stop();
-	      timeRanOut++
-          number = 20;
+	        timeRanOut++;
+	        console.log(timeRanOut)
+            $("#questions").text("Time is up!");
+	        nextQuestion();
+            number = 20;
             run();
             
-       
  		}
 
 //end timer section
@@ -126,22 +128,21 @@ function stop(){
 
  function correct(answer){
  	$("section ul a").on("click",function(event) {
-	
-madeSelection++
 	var userPick = ($(this).text());
 	
     console.log(userPick)
       
-
+ 
  		if (userPick == answer) {
 
-			 console.log ("you got it!")
+			console.log ("you got it!")
 	  		win++
-  			console.log(win++)
-  			nextQuestion();
+  			console.log(win)
+  			return nextQuestion();
   			event.stopPropagation();
+  			
 			 }
-
+        
   		return
 // // // 	console.log(loss++)
 // // // 	console.log("incorrect");
@@ -151,15 +152,16 @@ madeSelection++
 
     //nextQuestion();
 	event.stopPropagation();
- 	console.log(madeSelection);
+ 
     
 });
+return
 
 };
 
 
 
-function nextQuestion() {
+
 
 if(timeRanOut === 0) {
     questions(quiz[0].question);
@@ -168,7 +170,8 @@ if(timeRanOut === 0) {
 
 }
 
-  if(timeRanOut  === 1 || madeSelection == 1) {
+function nextQuestion () {
+  if(timeRanOut  === 1 || win === 1) {
 	   
 	   
 	   correct(quiz[1].correct);
@@ -176,22 +179,24 @@ if(timeRanOut === 0) {
 		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
         document.querySelector("#images").innerHTML = picture; 
         answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);   
-        correct(quiz[1].correct);
+       
 }
 
 
-  if(timeRanOut ===2 || madeSelection == 2) {
+
+   if(timeRanOut ===2 || win ===2) {
+
 
         correct(quiz[2].correct);
 		questions(quiz[2].question);
         answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
         $("#images").hide();
-        
+       
         
 
 }
 
-  if(timeRanOut ===3 || madeSelection == 3) {
+  if(timeRanOut ===3 || win === 3) {
 		correct(quiz[3].correct);
 		questions(quiz[3].question);
         answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
@@ -199,7 +204,7 @@ if(timeRanOut === 0) {
 
 }
 
- if(timeRanOut === 4 || madeSelection == 4) {
+  if(timeRanOut === 4 || win === 4) {
 
         correct(quiz[4].correct);
 		questions(quiz[4].question);
@@ -211,17 +216,16 @@ if(timeRanOut === 0) {
 
 }
 
- // if(timeRanOut ===5 || madeSelection ==5) {
-	// $("#images").hide();
-	// $("#questions").text("wins" + win + "losses" + (5-win));
-	// end();
-	// $("section").remove();
-	// $("#timer").remove();
-
-
+if (timeRanOut ===5 || win === 5) {
+ 	 $("#images").hide();
+ 	 $("#questions").text("wins " + win + " losses " + (5-win));
+ 	 stop();
+     $("section").remove();
+ 	 $("#timer").remove();
+}
+};
 // }
 
-};
 
 
 
