@@ -24,7 +24,8 @@ function gameStart() {
  	$("aside").hide();
  	$("article, section").show();
     event.stopPropagation();
-    run();
+     run();
+     nextQuestion();
      });
 };
 //end game start
@@ -65,7 +66,7 @@ var quiz = [{
 
 },
 ]
-
+ 
 //end content 
 
 //content html display
@@ -116,83 +117,51 @@ function stop(){
        
  		}
 
-
-
-
-
-
-nextQuestion();
-
-
-
-
-
-// function end(){
-// 		clearInterval(counter);
-
-// };
-
 //end timer section
 
 };
 
 
 
- function correct(answer){
 
- $("section ul a").on("click",function(event) {
-	madeSelection++
+ function correct(answer){
+ 	$("section ul a").on("click",function(event) {
+	
 
 	var userPick = ($(this).text());
-     console.log(userPick)
+	madeSelection++
+    console.log(userPick)
       
 
- if (userPick !== answer) {
+ 		if (userPick !== answer) {
 
+			return console.log("incorrect")
+ 			 //nextQuestion();
+  			}
 
-  //nextQuestion();
-
-  }
-
-  else  {
+  		else  {
 // // // 	console.log(loss++)
 // // // 	console.log("incorrect");
-//nextQuestion();
+
   	
 	
 	 console.log ("you got it!")
-//  console.log(win++)
+	  win++
+  	console.log(win++)
+  	nextQuestion();
+  	return
 // madeSelection++
-// nextQuestion();
+ 
 
    }
 
-   
- event.stopPropagation();
- console.log(madeSelection);
-
+    //nextQuestion();
+	event.stopPropagation();
+ 	console.log(madeSelection);
+ return
 });
 
 };
-
-console.log(madeSelection);
-// });
-
-// };
-
-// function nextQuestion() {
-
-
-// if(number === 0) {
- 		
-// 	       timeRanOut++
-
-//             //nextQuestion();
-            
-//              number = 10;
-             
-//  		}
-
 
 
 
@@ -201,26 +170,23 @@ function nextQuestion() {
 if(timeRanOut === 0) {
     questions(quiz[0].question);
   	answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
-     
-	     
-	 correct(quiz[0].correct)
+	 correct(quiz[0].correct);
 
 }
 
-  if(timeRanOut  === 1) {
+  if(timeRanOut  === 1 || madeSelection == 1) {
 	   
 	   
 	   
 		questions(quiz[1].question);
 		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
         document.querySelector("#images").innerHTML = picture; 
-        answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);
-        
+        answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);   
         correct(quiz[1].correct);
 }
 
 
-  if(timeRanOut ===2) {
+  if(timeRanOut ===2 || madeSelection == 2) {
 
         
 		questions(quiz[2].question);
@@ -231,8 +197,7 @@ if(timeRanOut === 0) {
 
 }
 
-  if(timeRanOut ===3) {
-
+  if(timeRanOut ===3 || madeSelection == 3) {
 
 		questions(quiz[3].question);
         answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
@@ -240,7 +205,7 @@ if(timeRanOut === 0) {
 
 }
 
-  if(timeRanOut === 4) {
+ if(timeRanOut === 4 || madeSelection == 4) {
 
    
 		questions(quiz[4].question);
@@ -252,18 +217,20 @@ if(timeRanOut === 0) {
 
 }
 
+ // if(timeRanOut ===5 || madeSelection ==5) {
+	// $("#images").hide();
+	// $("#questions").text("wins" + win + "losses" + (5-win));
+	// end();
+	// $("section").remove();
+	// $("#timer").remove();
 
- else if(timeRanOut ===5) {
-	$("#images").hide();
-	$("#questions").text("wins" + win + "losses" + (5-win));
-	end();
-	$("section").remove();
-	$("#timer").remove();
 
-
-}
+// }
 
 };
+
+
+
 // else if(questionNumber === 5) {
 
 // 		$("#images").remove();
