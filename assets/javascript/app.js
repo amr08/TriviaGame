@@ -127,38 +127,32 @@ function stop(){
  function correct(answer){
  	$("section ul a").on("click",function(event) {
 	
-
+madeSelection++
 	var userPick = ($(this).text());
-	madeSelection++
+	
     console.log(userPick)
       
 
- 		if (userPick !== answer) {
+ 		if (userPick == answer) {
 
-			return console.log("incorrect")
- 			 //nextQuestion();
-  			}
+			 console.log ("you got it!")
+	  		win++
+  			console.log(win++)
+  			nextQuestion();
+  			event.stopPropagation();
+			 }
 
-  		else  {
+  		return
 // // // 	console.log(loss++)
 // // // 	console.log("incorrect");
 
-  	
-	
-	 console.log ("you got it!")
-	  win++
-  	console.log(win++)
-  	nextQuestion();
-  	return
-// madeSelection++
- 
+  	 
 
-   }
 
     //nextQuestion();
 	event.stopPropagation();
  	console.log(madeSelection);
- return
+    
 });
 
 };
@@ -177,7 +171,7 @@ if(timeRanOut === 0) {
   if(timeRanOut  === 1 || madeSelection == 1) {
 	   
 	   
-	   
+	   correct(quiz[1].correct);
 		questions(quiz[1].question);
 		var picture = "<img src='https://wildrovertours.com/wp-content/uploads/2015/12/Cliffs-of-Moher-5.jpg'>"
         document.querySelector("#images").innerHTML = picture; 
@@ -188,32 +182,32 @@ if(timeRanOut === 0) {
 
   if(timeRanOut ===2 || madeSelection == 2) {
 
-        
+        correct(quiz[2].correct);
 		questions(quiz[2].question);
         answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
         $("#images").hide();
-        correct(quiz[2].correct);
+        
         
 
 }
 
   if(timeRanOut ===3 || madeSelection == 3) {
-
+		correct(quiz[3].correct);
 		questions(quiz[3].question);
         answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
-        correct(quiz[3].correct);
+        
 
 }
 
  if(timeRanOut === 4 || madeSelection == 4) {
 
-   
+        correct(quiz[4].correct);
 		questions(quiz[4].question);
 		var picture = "<img src='http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/10/12/new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462.jpeg'>"
         document.querySelector("#images").innerHTML = picture; 
         answers(quiz[4].answer[0], quiz[4].answer[1], quiz[4].answer[2], quiz[4].answer[3]);
         $("#images").show();
-        correct(quiz[4].correct);
+        
 
 }
 
