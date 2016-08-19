@@ -3,7 +3,7 @@ $(document).ready(function(){
 timeRanOut = 0;
 var win= 0;
 var miss=0;
-var number=10;
+var number=15;
 
 
 //content
@@ -88,7 +88,6 @@ function answers (a,b,c,d) {
 
 //timer section
 
- // var timeup = 3;
 
 function run() {
 
@@ -99,27 +98,6 @@ function stop(){
 	clearInterval(counter);
 }
 
- //  	function restart() {
-
- //    	ticker = setInterval(anotherTicker, 1000);
- //    	 	}
-
- // 	function hold(){
-	// 	clearInterval(ticker);
-	// 	 	}
-	// function anotherTicker() {
- // 	timeup--
-// 	if(timeup === 0) {
-		
-// 		noAnswer++
-// 		number = 10;
-// 		run();
-// 		nextQuestion();
-// 		console.log(noAnswer)
-// 		hold();
-// 		$("#timeup").empty();
-// 	}
-// }
 
 function timeLeft() {
   	number--
@@ -129,7 +107,7 @@ function timeLeft() {
  		stop();
       	timeRanOut++;
     	imagesWrong();
-      	number = 10;	
+      	number = 15;	
       	run();
       	nextQuestion();
 
@@ -137,28 +115,6 @@ function timeLeft() {
  	};
 
 //end timer section
-
-
-// notClicked();
-// function notClicked(){
-
-
-// $('.detect').on('click', function() {
-//   		$(this).data('clicked', 'yes');
-//   		});	
-		
-
-// var isClicked = $(".detect").data("clicked");
-
-//  			if (isClicked == "no" && number ===0) {
-//  				missed++
-//  				alert(missed);
-//  				}
-
- 				
-// };	
-
-
 
 
 //check answer
@@ -291,11 +247,13 @@ function nextQuestion () {
 
 function imagesCorrect() {
     var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
-        imgArray = [url+'dance-gif-snoopy-happy-animated-image-49277.gif',
-                    url+'happy-animals-23.jpg',
+       imgArray = [ url+'happy-animals-23.jpg',
                     url+'yay-54383329058.jpeg',
                     url+'lZpSEcZ.jpg',
                     url+'giphy.gif',
+                    url+'rgtl.gif',
+                   
+
                   ],
         randomNumber = Math.floor((Math.random() * imgArray.length)),
         baseUrl = "<img src=" + imgArray[randomNumber] + ">";
@@ -313,6 +271,7 @@ function imagesWrong() {
                     url+'Fred-Armisen-Confuse-Face-Californians.gif',
                     url+'dVJNUJlVS6yeyEYhtJIL_Confused%20Mark%20Wahlberg.gif',
                     url+'http-%252F%252Fmashable.com%252Fwp-content%252Fuploads%252F2013%252F07%252FDr.-Who.gif',
+                    url+'crying.gif',
 
                   ],
         randomNumber = Math.floor((Math.random() * imgArray.length)),
