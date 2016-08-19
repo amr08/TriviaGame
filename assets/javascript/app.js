@@ -133,7 +133,7 @@ function timeLeft() {
       	run();
       	nextQuestion();
 
-  }
+  		}
  	};
 
 //end timer section
@@ -278,7 +278,7 @@ function nextQuestion () {
   	if (timeRanOut ===6 ) {
   		$('#timer').show();
    	 	$("#images").hide();
-   	 	$("#questions").html("<h2> Correct Answers: " + win + "<br> Incorrect Answers: " + miss +" </h2>");
+   	 	$("#questions").html("<h2> Correct Answers: " + win + "<br> Incorrect Answers: " + miss + "<br> Unanswered: " + (timeRanOut-miss-win) + "</h2>");
    		stop();
     	$("section").remove();
    		$("#timer").remove();
