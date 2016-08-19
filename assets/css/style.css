@@ -1,15 +1,13 @@
 
 body  {
-margin: 0 auto;
-background: url("http://onehdwallpaper.com/wp-content/uploads/2015/07/Snow-Nature-Mountain-HD-Wallpaper.jpg");
-background-size: cover;
-background-repeat: no-repeat;
-
+	margin: 0 auto;
+	background: url("http://onehdwallpaper.com/wp-content/uploads/2015/07/Snow-Nature-Mountain-HD-Wallpaper.jpg");
+	background-size: cover;
+	background-repeat: no-repeat;
 	
 }
 
 .wrapper {
-
 	border-radius: 40px;
 	min-height: 600px;
 	background: #1A1A1A;
@@ -17,37 +15,37 @@ background-repeat: no-repeat;
 	margin: 10%;
 	border: 6px groove black;
 	font-family: 'Libre Franklin', sans-serif;
-	/*font-family: 'Tinos', serif;*/
-
-
+	
 }
 
 aside {
 	margin-top: 200px;
+
 }
 
 article {
 	text-align: center;
 	color: white;
 	
-	
 }
 
 #timer {
-
 	padding: 40px;
 	font-size: 16px;
+
 }
+
 img {
 	height: 300px;
 	width: 300px;
 	padding: 40px;
-	
+
 }
 
 
 h2 {
 	font-size: 20px;
+
 }
 
 h1 {
@@ -61,26 +59,18 @@ h1 {
 
 }
 
-
-
 section {
-
 	text-align: center;
 	
-
-
 }
+
 ul {
 	color: white;
 	text-align: center;
-	
-
 
 }
 
 ul li {
-	
-	
 	width: 50%;
 	margin: 0 auto;
 	padding: 20px;
@@ -92,6 +82,7 @@ ul li {
 ul li:hover {
    color: black;
    background: white;
+
 }
 
  a {
@@ -100,9 +91,4 @@ ul li:hover {
 }
 
 
-
-
-
-
-	
 

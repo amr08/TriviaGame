@@ -306,7 +306,6 @@ function imagesCorrect() {
 };
 
 
-
 function imagesWrong() {
     var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
         imgArray = [url+'1d0416739c31389a56dafaf0a2e8cf79.jpg',
