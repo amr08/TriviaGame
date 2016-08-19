@@ -152,7 +152,6 @@ function timeLeft() {
   			questions("Correct!");
 		 } 
 
-
 		 else {
       		miss++;
       		number = 5;
@@ -211,6 +210,8 @@ function nextQuestion () {
   		$("section ul a").show();
     	$("#correct img:last-child").remove();
 	 	$("#incorrect img:last-child").remove();
+	 	$("#correct").empty();
+		$("#incorrect").empty();
 		questions(quiz[4].question);
 		var picture = "<img src='http://travelchannel.sndimg.com/content/dam/images/travel/fullset/2015/10/12/new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462.jpeg'>"
     	document.querySelector("#images").innerHTML = picture;
@@ -231,10 +232,11 @@ function nextQuestion () {
 
 
 function imagesCorrect() {
-    var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/',
-        imgArray = [url+'Paris_Tuileries_Garden_Facepalm_statue.jpg',
-                    url+'Cliffs-of-Moher-5.jpg',
-                    url+'new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462%20(1).jpeg',
+    var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
+        imgArray = [url+'dance-gif-snoopy-happy-animated-image-49277.gif',
+                    url+'happy-animals-23.jpg',
+                    url+'yay-54383329058.jpeg',
+                    url+'lZpSEcZ.jpg',
                   ],
         randomNumber = Math.floor((Math.random() * imgArray.length)),
         baseUrl = "<img src=" + imgArray[randomNumber] + ">";
@@ -247,10 +249,11 @@ function imagesCorrect() {
 
 
 function imagesWrong() {
-    var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/',
-        imgArray = [url+'Paris_Tuileries_Garden_Facepalm_statue.jpg',
-                    url+'Cliffs-of-Moher-5.jpg',
-                    url+'new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462%20(1).jpeg',
+    var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
+        imgArray = [url+'1d0416739c31389a56dafaf0a2e8cf79.jpg',
+                    url+'Cute-Owl-Funny-Sad-Bird-Picture.jpg',
+                    url+'Fred-Armisen-Confuse-Face-Californians.gif',
+
                   ],
         randomNumber = Math.floor((Math.random() * imgArray.length)),
         baseUrl = "<img src=" + imgArray[randomNumber] + ">";
@@ -264,15 +267,15 @@ function imagesWrong() {
 // var APIKey = "dc6zaTOxFJmzC"; 
 
 // 	// Here we are building the URL we need to query the database
-// 	var queryURL = "http://api.giphy.com/v1/gifs/3o7TKEQn0CWNRoZjDa?api_key=" + APIKey;
+// 	var queryURL = "http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC" + APIKey;
 
 
 //      $.ajax({url: queryURL, method: 'GET'})
 	 
 // 	 .done(function(response) {
 // 	 	console.log(response.data);
-// $("#timeup").html("<img src=" + response.data.images.looping.mp4 + "/>")
-	 // });
+// $("#timeup").html("<img src=" + response.data + "/>")
+// 	 });
 
 
 
