@@ -126,7 +126,7 @@ function timeLeft() {
     		
  		if (userPick === correct) {
   			win++
-  			number = 3;
+  			number = 5;
   			$('#timer').hide();
   			imagesCorrect();  
         	$("section ul a").hide();
@@ -238,6 +238,14 @@ function nextQuestion () {
    		stop();
     	$("section").remove();
    		$("#timer").remove();
+
+   		if (miss || timeRanOut > win) {//
+   			console.log ("you lost!")
+
+   			else {
+   				console.log("Nice job");
+   			}
+   		}
    		
   }
 };
