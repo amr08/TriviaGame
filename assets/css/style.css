@@ -79,13 +79,13 @@ ul li {
 
 }
 
-ul li:hover {
-   color: black;
-   background: white;
+	ul li:hover {
+	   color: black;
+	   background: white;
 
-}
+	}
 
- a {
+a {
 	color: white;
 	text-decoration: none;
 }

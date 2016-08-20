@@ -87,8 +87,6 @@ function answers (a,b,c,d) {
 
 
 //timer section
-
-
 function run() {
 
     counter = setInterval(timeLeft, 1000);
@@ -184,7 +182,7 @@ function nextQuestion () {
 	 	questions(quiz[2].question);
    		answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
    		$("#images").hide();
-  }
+   }
 
   	if (timeRanOut ===3 ) {
 		$('#timer').show();
@@ -197,7 +195,7 @@ function nextQuestion () {
 
 		questions(quiz[3].question);
     	answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
-  }
+   }
 
   	if (timeRanOut === 4 ) {
   		$('#timer').show();
@@ -215,7 +213,7 @@ function nextQuestion () {
 						"new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462%20(1).jpeg'>"
     	document.querySelector("#images").innerHTML = picture; 	
     	$("#images").show();
-  }
+   }
 
    	if (timeRanOut === 5 ) {
   		$('#timer').show();
@@ -228,31 +226,42 @@ function nextQuestion () {
 
 		questions(quiz[5].question);
     	answers(quiz[5].answer[0], quiz[5].answer[1], quiz[5].answer[2], quiz[5].answer[3]);
-    	("#images").hide();
-  }
+    	
+   }
 
   	if (timeRanOut ===6 ) {
-  		$('#timer').show();
-   	 	$("#images").hide();
+  		
    	 	$("#questions").html("<h2> Correct Answers: " + win + "<br> Incorrect Answers: " + miss + "<br> Unanswered: " + (timeRanOut-miss-win) + "</h2>");
    		stop();
     	$("section").remove();
    		$("#timer").remove();
 
-   		if (miss || timeRanOut > win) {//
-   			console.log ("you lost!")
+   			if (miss > win) {
 
-   			else {
-   				console.log("Nice job");
-   			}
-   		}
-   		
-  }
+	            var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+							"54a78a9754dec_-_cryinggifs_01_1.gif'>"
+	   			
+	    		document.querySelector("#images").innerHTML = picture; 	
+	    		$("#images").show();
+	    		$("#results").html("<br> <h2> Hmm, you should try that again dude. </h2>");     
+	   			
+	   		}
+
+	   		else {
+
+	   			var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+							"tumblr_mo1q4j97uZ1sts0lxo1_400.gif'>"
+	   			
+	    		document.querySelector("#images").innerHTML = picture; 	
+	    		$("#images").show();
+	   			$("#results").html("<br> <h2> You're pretty smart.</h2>");
+	   		}
+  	}
+
 };
 //end content display conditionals
 
-
-
+//Images at random
 function imagesCorrect() {
     var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
        imgArray = [ url+'happy-animals-23.jpg',
@@ -261,6 +270,7 @@ function imagesCorrect() {
                     url+'giphy.gif',
                     url+'rgtl.gif',
                     url+'421.gif',
+
                    
 
                   ],
@@ -269,7 +279,7 @@ function imagesCorrect() {
 
     	$("#correct").append(baseUrl);
     	$("#images").hide();
-    	console.log(imgArray)
+    	
 };
 
 
@@ -288,7 +298,7 @@ function imagesWrong() {
 
     	$("#incorrect").append(baseUrl);
     	$("#images").hide();
-    	console.log(imgArray)
+    	
 };
 
 
@@ -309,4 +319,5 @@ function imagesWrong() {
 
 
 $(document).ready(gameStart);
+
 });
