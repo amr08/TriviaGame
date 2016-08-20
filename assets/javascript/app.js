@@ -62,6 +62,7 @@ function gameStart() {
  	$("aside").hide();
  	$("article, section").show();
     event.stopPropagation();
+    $("#restart").hide();
     run();
     });
 };
@@ -90,6 +91,7 @@ function answers (a,b,c,d) {
 function run() {
 
     counter = setInterval(timeLeft, 1000);
+    $("#restart").hide();
 }
 
 function stop(){
@@ -235,6 +237,13 @@ function nextQuestion () {
    		stop();
     	$("section").remove();
    		$("#timer").remove();
+   		
+   		$("#restart").show().on('click', function() {
+   			
+ 			 gameStart();
+ 			 window.location.reload();
+ 			
+   		});
 
    			if (miss > win) {
 
