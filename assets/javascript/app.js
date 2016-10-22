@@ -1,332 +1,290 @@
 $(document).ready(function(){
 
-timeRanOut = 0;
-var win= 0;
-var miss=0;
-var number=15;
+  timeRanOut = 0;
+  var win= 0;
+  var miss=0;
+  var number=15;
 
 
 //content
-
-var quiz = [{
-
-		question: "What is the largest country located entirely in Europe?",
-		answer: ["Germany", "Spain", "France", "Ukraine"],
-		correct: "France"
-	},
-
-	{
-		question: "What country are these cliffs located in?",
-		answer: ["Canada", "Peru", "Japan", "Ireland"],
-		correct: "Ireland"
-	},
-
-	{
-		question: "What is the most visited tourist attraction in the world?",
-		answer: ["Times Square", "Disney World", "The Colosseum", "The Eiffel Tower"],
-		correct: "Times Square"
-	},
-
-	{
-		question: "Where was Leonardo DiCaprio's movie, 'The Beach', filmed?",
-		answer: ["Fiji", "Hawaii", "Thailand", "Costa Rica"],
-		correct: "Thailand"
-
-	},
-
-	{
-		question: "Where is this Wonder of the World Located?",
-		answer: ["Scotland","Mexico", "Peru", "Indonesia"],
-		correct: "Peru"
-
-	},
+  var quiz = [
+    {
+    	question: "What is the largest country located entirely in Europe?",
+    	answer: ["Germany", "Spain", "France", "Ukraine"],
+    	correct: "France"
+    },
 
     {
-		question: "The great Victoria Desert is located in?",
-		answer: ["Canada","West Africa", "Australia", "North America"],
-		correct: "Australia"
-	},
-];
+    	question: "What country are these cliffs located in?",
+    	answer: ["Canada", "Peru", "Japan", "Ireland"],
+    	correct: "Ireland"
+    },
+
+    {
+    	question: "What is the most visited tourist attraction in the world?",
+    	answer: ["Times Square", "Disney World", "The Colosseum", "The Eiffel Tower"],
+    	correct: "Times Square"
+  	},
+
+  	{
+    	question: "Where was Leonardo DiCaprio's movie, 'The Beach', filmed?",
+    	answer: ["Fiji", "Hawaii", "Thailand", "Costa Rica"],
+    	correct: "Thailand"
+  	},
+
+  	{
+    	question: "Where is this Wonder of the World Located?",
+    	answer: ["Scotland","Mexico", "Peru", "Indonesia"],
+    	correct: "Peru"
+  	},
+
+    {
+  		question: "The great Victoria Desert is located in?",
+  		answer: ["Canada","West Africa", "Australia", "North America"],
+  		correct: "Australia"
+  	},
+  ];
 
 //end content
 
 
 //game start
 
-function gameStart() {
- $("aside").show();
- $("article, section").hide();
+  function gameStart() {
+    $("aside").show();
+    $("article, section").hide();
 
- $("aside").on("click", function(event) {
-
- 	$("aside").hide();
- 	$("article, section").show();
-    event.stopPropagation();
-    $("#restart").hide();
-    run();
+    $("aside").on("click", function(event) {
+     	$("aside").hide();
+     	$("article, section").show();
+      event.stopPropagation();
+      $("#restart").hide();
+      run();
     });
-};
+  };
 //end game start
 
 
 //content html display
-function questions (prompt1) {
-   $("#questions").text(prompt1);
+  function questions (prompt1) {
+     $("#questions").text(prompt1);
+  };
 
-
-};
-
-function answers (a,b,c,d) {
-	$("#answer1").text(a);
-	$("#answer2").text(b);
-	$("#answer3").text(c);
-	$("#answer4").text(d);
-
-
-};
+  function answers (a,b,c,d) {
+  	$("#answer1").text(a);
+  	$("#answer2").text(b);
+  	$("#answer3").text(c);
+  	$("#answer4").text(d);
+  };
 //end content html display
 
-
 //timer section
-function run() {
-
+  function run() {
     counter = setInterval(timeLeft, 1000);
     $("#restart").hide();
-}
+  }
 
-function stop(){
-	clearInterval(counter);
-}
+  function stop(){
+  	clearInterval(counter);
+  }
 
 
-function timeLeft() {
-  	number--
- 	$('#timer').html('<h2> Time Remaining: ' + number + '</h2>');
+  function timeLeft() {
+    number--
+   	$('#timer').html('<h2> Time Remaining: ' + number + '</h2>');
 
- 	if(number === 0) {
- 		stop();
-      	timeRanOut++;
-    	imagesWrong();
-      	number = 15;	
-      	run();
-      	nextQuestion();
-
-  		}
- 	};
-
+   	if(number === 0) {
+   		stop();
+      timeRanOut++;
+      imagesWrong();
+      number = 15;	
+      run();
+      nextQuestion();
+    }
+  };
 //end timer section
 
 
 //check answer
- $("section ul a").on("click",function(event) {
-
+  $("section ul a").on("click",function(event) {
     event.stopPropagation();
-  	var userPick = ($(this).text());
+    var userPick = ($(this).text());
     var correct = quiz[timeRanOut].correct;
-    		
- 		if (userPick === correct) {
-  			win++
-  			number = 5;
-  			$('#timer').hide();
-  			imagesCorrect();  
-        	$("section ul a").hide();
-  			questions("Correct!");
-		 } 
 
-		else  {
-      		miss++;
-      		number = 5;
-      		$('#timer').hide();
-      		imagesWrong();
-        	$("section ul a").hide();
-        	questions("Wrong! Correct answer was " +  quiz[timeRanOut].correct);
-     	    
-     	 }
- 
+      if (userPick === correct) {
+    	  win++
+    		number = 5;
+    		$('#timer').hide();
+    		imagesCorrect();  
+        $("section ul a").hide();
+    		questions("Correct!");
+  		} else  {
+        	miss++;
+        	number = 5;
+        	$('#timer').hide();
+        	imagesWrong();
+          $("section ul a").hide();
+          questions("Wrong! Correct answer was " +  quiz[timeRanOut].correct);
+      } 
   });
-
 //end checkanswer
 
-
 //content display conditionals
-	if(timeRanOut === 0) {
-    	questions(quiz[0].question);
-  		answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
-	}
+  if(timeRanOut === 0) {
+    questions(quiz[0].question);
+    answers(quiz[0].answer[0], quiz[0].answer[1], quiz[0].answer[2], quiz[0].answer[3]);
+  }
 
-function nextQuestion () {
+  function nextQuestion () {
 
- 	if (timeRanOut  === 1) {
- 		$('#timer').show();
- 		$("section ul a").show();
-
-		$("#correct").empty();
-		$("#incorrect").empty();
-
-    	questions(quiz[1].question);
-    	answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);
-
-  		var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
-  						"Cliffs-of-Moher-5.jpg'>"
-    	document.querySelector("#images").innerHTML = picture;
-    	$("#images").show();
-   }
-
- 	if (timeRanOut === 2) {
- 		$('#timer').show();
+   	if (timeRanOut  === 1) {
+   		$('#timer').show();
    		$("section ul a").show();
+  		$("#correct").empty();
+  		$("#incorrect").empty();
 
-   		$("#correct").empty();
-		$("#incorrect").empty();
-   		$("#correct img:last-child").remove();
-   		$("#incorrect img:last-child").remove();
+      questions(quiz[1].question);
+      answers(quiz[1].answer[0], quiz[1].answer[1], quiz[1].answer[2], quiz[1].answer[3]);
 
-	 	questions(quiz[2].question);
-   		answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
-   		$("#images").hide();
-   }
+    	var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+    						"Cliffs-of-Moher-5.jpg'>"
+      	document.querySelector("#images").innerHTML = picture;
+        $("#images").show();
+    }
 
-  	if (timeRanOut ===3 ) {
-		$('#timer').show();
-  		$("section ul a").show();
+   	if (timeRanOut === 2) {
+   		$('#timer').show();
+     	$("section ul a").show();
+     	$("#correct").empty();
+  		$("#incorrect").empty();
+     	$("#correct img:last-child").remove();
+     	$("#incorrect img:last-child").remove();
 
-  		$("#correct img:last-child").remove();
-	  	$("#incorrect img:last-child").remove();
-	  	$("#correct").empty();
-		$("#incorrect").empty();
+  	 	questions(quiz[2].question);
+     	answers(quiz[2].answer[0], quiz[2].answer[1], quiz[2].answer[2], quiz[2].answer[3]);
+     	$("#images").hide();
+    }
 
-		questions(quiz[3].question);
-    	answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
-   }
-
-  	if (timeRanOut === 4 ) {
+    if (timeRanOut ===3 ) {
   		$('#timer').show();
-  		$("section ul a").show();
+    	$("section ul a").show();
+      $("#correct img:last-child").remove();
+  	  $("#incorrect img:last-child").remove();
+  	  $("#correct").empty();
+  		$("#incorrect").empty();
 
-    	$("#correct img:last-child").remove();
-	 	$("#incorrect img:last-child").remove();
-	 	$("#correct").empty();
-		$("#incorrect").empty();
+  		questions(quiz[3].question);
+      answers(quiz[3].answer[0], quiz[3].answer[1], quiz[3].answer[2], quiz[3].answer[3]);
+    }
 
-		questions(quiz[4].question);
-		answers(quiz[4].answer[0], quiz[4].answer[1], quiz[4].answer[2], quiz[4].answer[3]);
+    if (timeRanOut === 4 ) {
+    	$('#timer').show();
+    	$("section ul a").show();
+      $("#correct img:last-child").remove();
+  	 	$("#incorrect img:last-child").remove();
+  	 	$("#correct").empty();
+  		$("#incorrect").empty();
 
-		var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
-						"new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462%20(1).jpeg'>"
-    	document.querySelector("#images").innerHTML = picture; 	
-    	$("#images").show();
-   }
+  		questions(quiz[4].question);
+  		answers(quiz[4].answer[0], quiz[4].answer[1], quiz[4].answer[2], quiz[4].answer[3]);
+  		var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+  						"new-seven-wonders-machu-picchu.jpg.rend.tccom.616.462%20(1).jpeg'>"
+      	document.querySelector("#images").innerHTML = picture; 	
+      $("#images").show();
+    }
 
-   	if (timeRanOut === 5 ) {
-  		$('#timer').show();
-  		$("section ul a").show();
+    if (timeRanOut === 5 ) {
+    	$('#timer').show();
+    	$("section ul a").show();
+      $("#correct img:last-child").remove();
+  	 	$("#incorrect img:last-child").remove();
+  	 	$("#correct").empty();
+  		$("#incorrect").empty();
 
-    	$("#correct img:last-child").remove();
-	 	$("#incorrect img:last-child").remove();
-	 	$("#correct").empty();
-		$("#incorrect").empty();
+  		questions(quiz[5].question);
+      answers(quiz[5].answer[0], quiz[5].answer[1], quiz[5].answer[2], quiz[5].answer[3]);
+      	
+    }
 
-		questions(quiz[5].question);
-    	answers(quiz[5].answer[0], quiz[5].answer[1], quiz[5].answer[2], quiz[5].answer[3]);
-    	
-   }
+    if (timeRanOut ===6 ) {
+    	$("#questions").html("<h2> Correct Answers: " + win + "<br> Incorrect Answers: " + miss + "<br> Unanswered: " + (timeRanOut-miss-win) + "</h2>");
+     	stop();
+      $("section").remove();
+     	$("#timer").remove();
 
-  	if (timeRanOut ===6 ) {
-  		
-   	 	$("#questions").html("<h2> Correct Answers: " + win + "<br> Incorrect Answers: " + miss + "<br> Unanswered: " + (timeRanOut-miss-win) + "</h2>");
-   		stop();
-    	$("section").remove();
-   		$("#timer").remove();
-   		
-   		$("#restart").show().on('click', function() {
-   			
- 			 gameStart();
- 			 window.location.reload();
- 			
-   		});
+     	$("#restart").show().on('click', function() {			
+     		gameStart();
+     		window.location.reload();
+      });
 
-   			if (miss > win) {
-
-	            var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
-							"54a78a9754dec_-_cryinggifs_01_1.gif'>"
-	   			
-	    		document.querySelector("#images").innerHTML = picture; 	
-	    		$("#images").show();
-	    		$("#results").html("<br> <h2> Hmm, you should try that again dude. </h2>");     
-	   			
-	   		}
-
-	   		else {
-
-	   			var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
-							"tumblr_mo1q4j97uZ1sts0lxo1_400.gif'>"
-	   			
-	    		document.querySelector("#images").innerHTML = picture; 	
-	    		$("#images").show();
-	   			$("#results").html("<br> <h2> You're pretty smart.</h2>");
-	   		}
+    if (miss > win) {
+      var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+  							"54a78a9754dec_-_cryinggifs_01_1.gif'>"
+  	    document.querySelector("#images").innerHTML = picture; 
+      $("#images").show();
+  	  $("#results").html("<br> <h2> Hmm, you should try that again dude. </h2>");     
+  	}  else {
+        var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
+  							"tumblr_mo1q4j97uZ1sts0lxo1_400.gif'>"
+  	   		document.querySelector("#images").innerHTML = picture; 	
+  	    $("#images").show();
+  	   	$("#results").html("<br> <h2> You're pretty smart.</h2>");
   	}
+  }
 
-};
+  };
 //end content display conditionals
 
 //Images at random
-function imagesCorrect() {
+  function imagesCorrect() {
     var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
-       imgArray = [ url+'happy-animals-23.jpg',
-                    url+'yay-54383329058.jpeg',
-                    url+'lZpSEcZ.jpg',
-                    url+'giphy.gif',
-                    url+'rgtl.gif',
-                    url+'421.gif',
-
-                   
-
+      imgArray = [url+'happy-animals-23.jpg',
+                  url+'yay-54383329058.jpeg',
+                  url+'lZpSEcZ.jpg',
+                  url+'giphy.gif',
+                  url+'rgtl.gif',
+                  url+'421.gif',
                   ],
-        randomNumber = Math.floor((Math.random() * imgArray.length)),
-        baseUrl = "<img src=" + imgArray[randomNumber] + ">";
 
-    	$("#correct").append(baseUrl);
-    	$("#images").hide();
-    	
-};
+      randomNumber = Math.floor((Math.random() * imgArray.length)),
+      baseUrl = "<img src=" + imgArray[randomNumber] + ">";
+      $("#correct").append(baseUrl);
+      $("#images").hide();   	
+  };
 
-
-function imagesWrong() {
+  function imagesWrong() {
     var url = 'https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/correct%20and%20incorrect/',
-        imgArray = [url+'1d0416739c31389a56dafaf0a2e8cf79.jpg',
-                    url+'Cute-Owl-Funny-Sad-Bird-Picture.jpg',
-                    url+'Fred-Armisen-Confuse-Face-Californians.gif',
-                    url+'dVJNUJlVS6yeyEYhtJIL_Confused%20Mark%20Wahlberg.gif',
-                    url+'http-%252F%252Fmashable.com%252Fwp-content%252Fuploads%252F2013%252F07%252FDr.-Who.gif',
-                    url+'crying.gif',
-
+      imgArray = [url+'1d0416739c31389a56dafaf0a2e8cf79.jpg',
+                  url+'Cute-Owl-Funny-Sad-Bird-Picture.jpg',
+                  url+'Fred-Armisen-Confuse-Face-Californians.gif',
+                  url+'dVJNUJlVS6yeyEYhtJIL_Confused%20Mark%20Wahlberg.gif',
+                  url+'http-%252F%252Fmashable.com%252Fwp-content%252Fuploads%252F2013%252F07%252FDr.-Who.gif',
+                  url+'crying.gif',
                   ],
-        randomNumber = Math.floor((Math.random() * imgArray.length)),
-        baseUrl = "<img src=" + imgArray[randomNumber] + ">";
 
-    	$("#incorrect").append(baseUrl);
-    	$("#images").hide();
-    	
-};
-
-
-// var APIKey = "dc6zaTOxFJmzC"; 
-
-// 	// Here we are building the URL we need to query the database
-// 	var queryURL = "http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC" + APIKey;
+      randomNumber = Math.floor((Math.random() * imgArray.length)),
+      baseUrl = "<img src=" + imgArray[randomNumber] + ">";
+      $("#incorrect").append(baseUrl);
+      $("#images").hide();     	
+  };
 
 
-//      $.ajax({url: queryURL, method: 'GET'})
-	 
-// 	 .done(function(response) {
-// 	 	console.log(response.data);
-// $("#timeup").html("<img src=" + response.data + "/>")
-// 	 });
+  // var APIKey = "dc6zaTOxFJmzC"; 
 
+  // 	// Here we are building the URL we need to query the database
+  // 	var queryURL = "http://api.giphy.com/v1/stickers/search?q=cat&api_key=dc6zaTOxFJmzC" + APIKey;
+
+
+  //      $.ajax({url: queryURL, method: 'GET'})
+  	 
+  // 	 .done(function(response) {
+  // 	 	console.log(response.data);
+  // $("#timeup").html("<img src=" + response.data + "/>")
+  // 	 });
 
 
 
-$(document).ready(gameStart);
+
+  $(document).ready(gameStart);
 
 });
