@@ -55,7 +55,7 @@ $(document).ready(function(){
     $("article, section").hide();
 
     $("aside").on("click", function(event) {
-     	$("aside").hide();
+      $("aside").hide();
      	$("article, section").show();
       event.stopPropagation();
       $("#restart").hide();
@@ -90,7 +90,7 @@ $(document).ready(function(){
 
 
   function timeLeft() {
-    number--
+    number--;
    	$('#timer').html('<h2> Time Remaining: ' + number + '</h2>');
 
    	if(number === 0) {
@@ -111,21 +111,21 @@ $(document).ready(function(){
     var userPick = ($(this).text());
     var correct = quiz[timeRanOut].correct;
 
-      if (userPick === correct) {
-    	  win++
-    		number = 5;
-    		$('#timer').hide();
-    		imagesCorrect();  
+    if (userPick === correct) {
+  	  win++
+  		number = 5;
+  		$('#timer').hide();
+  		imagesCorrect();  
+      $("section ul a").hide();
+  		questions("Correct!");
+		} else  {
+      	miss++;
+      	number = 5;
+      	$('#timer').hide();
+      	imagesWrong();
         $("section ul a").hide();
-    		questions("Correct!");
-  		} else  {
-        	miss++;
-        	number = 5;
-        	$('#timer').hide();
-        	imagesWrong();
-          $("section ul a").hide();
-          questions("Wrong! Correct answer was " +  quiz[timeRanOut].correct);
-      } 
+        questions("Wrong! Correct answer was " +  quiz[timeRanOut].correct);
+    } 
   });
 //end checkanswer
 
@@ -223,7 +223,7 @@ $(document).ready(function(){
   	    document.querySelector("#images").innerHTML = picture; 
       $("#images").show();
   	  $("#results").html("<br> <h2> Hmm, you should try that again dude. </h2>");     
-  	}  else {
+  	} else {
         var picture = "<img src='https://raw.githubusercontent.com/amr08/TriviaGame/master/assets/images/" + 
   							"tumblr_mo1q4j97uZ1sts0lxo1_400.gif'>"
   	   		document.querySelector("#images").innerHTML = picture; 	
@@ -281,8 +281,6 @@ $(document).ready(function(){
   // 	 	console.log(response.data);
   // $("#timeup").html("<img src=" + response.data + "/>")
   // 	 });
-
-
 
 
   $(document).ready(gameStart);
